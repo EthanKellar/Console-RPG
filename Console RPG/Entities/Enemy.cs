@@ -21,6 +21,7 @@ namespace Console_RPG
         public override void Attack(Entity target)
         {
             //Calculate damage and subtract from target HP
+            target.currentHP -= ((this.stats.strength * 10) / target.stats.defense);
             Console.WriteLine(this.Name + " attacked " + target.Name + "!");
         }
     }

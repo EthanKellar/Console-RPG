@@ -19,23 +19,34 @@ namespace Console_RPG
 
         public void setNearbyLocations(Location north = null, Location east = null, Location south = null, Location west = null)
         {
-            this.north = north;
-            this.east = east;
-            this.west = west;
-            this.south = south;
 
 
             if (!(north is null))
+            {
+                this.north = north;
                 north.south = this;
+            }
             
             if(!(east is null))
+            {
                 east.west = this;
+                this.east = east;
+
+            }
 
             if(!(south is null))
+            {
                 south.north = this;
+                this.south = south;
+
+            }
 
             if(!(west is null))
+            {
                 west.east = this;
+                this.west = west;
+
+            }
         }
 
         public void Resolve()
@@ -64,9 +75,11 @@ namespace Console_RPG
             else if (direction == "east")
                 nextLocation = this.east;
             else
+            {
                 Console.WriteLine("That's not a proper direction! (Hint, all lowercase)");
-
-
+                this.Resolve();
+            }
+            nextLocation.Resolve();
         }
     }
 }
