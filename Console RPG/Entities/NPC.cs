@@ -18,5 +18,9 @@ namespace Console_RPG
         {
             throw new NotImplementedException();
         }
+        public override void DoTurn(List<Player> players, List<Ally> allies, List<Enemy> enemies)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
