@@ -17,13 +17,20 @@ namespace Console_RPG
 
         //Emerald Hill Battle
         public static Enemy motobug2 = new Enemy("Motobug", 50, 50, new Stats(60, 30, 40), 10, "Speed");
-        public static Enemy buzzBomber2 = new Enemy("Buzz Bomber", 50, 50, new Stats(30, 40, 60), 10, "Flight");
-        public static Enemy chopper2 = new Enemy("Chopper", 50, 50, new Stats(60, 30, 40), 10, "Speed");
+        public static Enemy buzzer = new Enemy("Buzzer", 50, 50, new Stats(30, 40, 60), 10, "Flight");
+        public static Enemy coconuts = new Enemy("Coconuts", 50, 50, new Stats(30, 60, 40), 10, "Power");
+
+        //Chemical Plant Battle
+        public static Enemy caterkiller = new Enemy("Caterkiller", 50, 50, new Stats(60, 30, 40), 10, "Speed");
+        public static Enemy grabber = new Enemy("Buzzer", 50, 50, new Stats(30, 40, 60), 10, "Flight");
+        public static Enemy spiny = new Enemy("Coconuts", 50, 50, new Stats(30, 60, 40), 10, "Power");
+
+        //Robotropolis boss battle
+        public static Enemy metalSonic = new Enemy("Metal Sonic", 200, 100, new Stats(80, 45, 65), 100, "Speed");
+
+        public static Enemy boss = new Enemy("Egg Dragon", 12500, 1000, new Stats(800, 1000, 500), 100, "All");
 
 
-
-
-        public static Enemy boss = new Enemy("Egg Dragon", 250, 100, new Stats(80, 100, 95), 100, "All");
         public int ringsDroppedOnDefeat;
         public string coreType;
         public Enemy(string name, int hp, int mana, Stats stats, int ringsDroppedOnDefeat, string coreType) : base(name, hp, mana, stats)
@@ -42,6 +49,8 @@ namespace Console_RPG
             //Calculate damage and subtract from target HP
             target.currentHP -= ((this.stats.strength * 10) / target.stats.defense);
             Console.WriteLine(this.Name + " attacked " + target.Name + "!");
+            Console.WriteLine($"{this.Name} dealt {(this.stats.strength * 10) / target.stats.defense} damage!");
+            Console.WriteLine($"{target.Name} is now at {target.currentHP}!");
         }
 
         public override void DoTurn(List<Player> players, List<Ally> allies, List<Enemy> enemies)

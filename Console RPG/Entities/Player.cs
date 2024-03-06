@@ -17,7 +17,7 @@ namespace Console_RPG
 
         public Player(string name, int hp, int mana, Stats stats, int ringCount) : base(name, hp, mana, stats)
         {
-            this.ringCount = ringCount;
+            Player.ringCount = ringCount;
         }
 
         public override Entity ChooseTarget(List<Entity> choices)
@@ -53,6 +53,8 @@ namespace Console_RPG
         {
             target.currentHP -= ((this.stats.strength * 10) / target.stats.defense);
             Console.WriteLine(this.Name + " attacked " + target.Name + "!");
+            Console.WriteLine($"{this.Name} dealt {(this.stats.strength * 10) / target.stats.defense} damage!");
+            Console.WriteLine($"{target.Name} is now at {target.currentHP}!");
         }
 
         public void UseItem(Item item, Entity target)
@@ -64,12 +66,12 @@ namespace Console_RPG
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("atk | item");
             string choice = Console.ReadLine();
-            if (choice == "atk")
+            if (choice == "atk" || choice == "a")
             {
                 Entity target = ChooseTarget(enemies.Cast<Entity>().ToList());
                 Attack(target);
             }
-            else if (choice == "item")
+            else if (choice == "item" || choice == "i")
             {
                 Item item = ChooseItem(Inventory);
                 Entity target = ChooseTarget(players.Cast<Entity>().ToList());

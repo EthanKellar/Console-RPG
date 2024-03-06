@@ -18,6 +18,12 @@ namespace Console_RPG
 
         public override void Resolve(List<Player> players, List<Ally> allies)
         {
+            Console.Write($"You ran into ");
+            foreach(var enemy in enemies)
+            {
+                Console.Write($"{enemy.Name}, ");
+            }
+            Console.WriteLine();
             while (true)
             {
                 //run this code on each of the players

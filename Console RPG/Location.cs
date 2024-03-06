@@ -16,11 +16,11 @@ namespace Console_RPG
         public static Location springYard = new Location("Spring Yard", "What was once an EggFacility, is now just a yard of scraps and springs. Warning: is quite bouncy!");
         public static Location mysticRuin = new Location("Mystic Ruin", "The ruins of an ancient temple. I wonder if it's connected to Angel island?");
         public static Location hiddenTemple = new Location("Hidden Temple", "The hidden temple that Knuckles was talking about!");
-        public static Location robotropolis = new Location("Robotropolis", "The Capitol of the Eggman Empire.");
+        public static Location robotropolis = new Location("Robotropolis", "The Capitol of the Eggman Empire.", new Battle(new List<Enemy>() { Enemy.metalSonic }));
         public static Location eggmanland = new Location("Eggmanland", "A twisted theme park consisting of traps, and sulfuric cotton candy.");
-        public static Location westopolis = new Location("Westopolis", "A lively city located in-between the coastline, and a desert.");
-        public static Location emeraldHill = new Location("Emerald Hill", "This may look simila to Green Hill, but there's twice as many obstacles to overcome, though it's worth the reward!", new Battle(new List<Enemy>() { Enemy.motobug2, Enemy.chopper2, Enemy.buzzBomber2 }));
-        public static Location emeraldCoast = new Location("Emerald Coast", "A beautiful coastline connected to Emerald hill, with a Lighthouse and beach hangout spot!");
+        public static Location westopolis = new Location("Westopolis", "A lively city located in-between the coastline, and a desert.", new Battle(new List<Enemy>() { Enemy.boss }));
+        public static Location emeraldHill = new Location("Emerald Hill", "This may look simila to Green Hill, but there's twice as many obstacles to overcome, though it's worth the reward!", new Battle(new List<Enemy>() { Enemy.motobug2, Enemy.coconuts, Enemy.buzzer }));
+        public static Location emeraldCoast = new Location("Emerald Coast", "A beautiful coastline connected to Emerald hill, with a Lighthouse and beach hangout spot!", new Shop("Big The Cat & Froggy the Frog", "Big's Fishing Hut", new List<Item> { Item.chiliDog, Item.chaoCola }, "Welcome, friends.", "Froggy sure seems excited to see you"));
 
         public string name;
         public string description;
@@ -75,6 +75,61 @@ namespace Console_RPG
             Console.WriteLine("You arrived in " + this.name + ".");
             Console.WriteLine(this.description);
 
+
+
+            if (this == angelIsland)
+            {
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Knuckles: Hey, what are you doing here?");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Sonic: Hey knux, we're just dropping by, trying to get some help to stop Egghead again");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Knuckles: Yeah, go north at mystic ruins, should take you to Hidden Temple where you can power up with the chaos emeralds.");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Tails: Really? I've ran multiple analysis of mystic ruin, and it's surrounding areas, never have I found a \"Hidden Temple\"");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Knuckles: That's because it's ancient echidnan magic, can't be picked up by technology. That's why Eggman hasn't found it yet");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Sonic: Thanks Knux, We'll leave you alone now");
+                System.Threading.Thread.Sleep(5000);
+                Location.tropicalJungle.east = null;
+                Location.mysticRuin.north = hiddenTemple;
+                tropicalJungle.Resolve(players, allies);
+                return;
+            }
+            if (this == hiddenTemple)
+            {
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Tails: Wow, this must be the Hidden Temple that knuckles was talking about!");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Tails: According to my scans, there's ancient echidnan technology all over this place, meant to safeguard the chaos emeralds from evil!");
+                System.Threading.Thread.Sleep(10000);
+                Console.WriteLine("As Sonic & Tails investigate the temple further, seven pillars arise from the ground, all with a different colored glow");
+                System.Threading.Thread.Sleep(6000);
+                Console.WriteLine("A platform arises in the middle, it glows with golden light, calling Sonic to step onto the platform");
+                System.Threading.Thread.Sleep(4000);
+                Console.WriteLine("As Sonic steps onto the glowing platform, the Chaos Emeralds begin to glow, and float off of the pillars, beginning to surround Sonic");
+                System.Threading.Thread.Sleep(10000);
+                Console.WriteLine("The Chaos Emeralds begin to spin around Sonic, and his quills begin to rise");
+                System.Threading.Thread.Sleep(5000);
+                Player.player1.maxHP = 10000;
+                Player.player1.currentHP = Player.player1.maxHP;
+                Player.player1.stats.speed = 299792458;
+                Player.player1.stats.strength = 1000;
+                Player.player1.stats.defense = 500;
+                Player.player1.Name = "Super Sonic";
+                Console.WriteLine("Sonic turns into an almost blinding golden glow, as Tails looks up in awe");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Tails: Sonic, you've gone super!");
+                System.Threading.Thread.Sleep(3000);
+                Console.WriteLine("Super Sonic: All-right! This is just what I needed to beat Eggman! Let's go, Tails!");
+                System.Threading.Thread.Sleep(5000);
+
+                //DO SAME THING WITH HIDDEN TEMPLE THAT YOU DID WITH ANGEL ISLAND!
+
+            }
+
+
             if (!(north is null))
                 Console.WriteLine("NORTH: " + this.north.name);
             if (!(west is null))
@@ -111,7 +166,7 @@ namespace Console_RPG
 
             if (nextLocation == null)
             {
-                Console.WriteLine("That's not a proper direction! (Hint, doesn't exist!)");
+                Console.WriteLine("Huh, there's nothing here. Better go back");
                 this.Resolve(players, allies);
             }
             nextLocation.Resolve(players, allies);

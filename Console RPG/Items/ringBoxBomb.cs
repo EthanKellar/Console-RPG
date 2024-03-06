@@ -25,7 +25,7 @@ namespace Console_RPG
             target.currentHP -= this.damage;
             --ammo;
 
-            Console.WriteLine(user.Name + " Had places to go, so he threw a Ring Box at " + target.Name);
+            Console.WriteLine(target.Name + " took a Ring Box to the face!");
             Console.WriteLine("Dealt " + this.damage + " Damage!");
         }
     }

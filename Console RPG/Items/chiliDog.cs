@@ -18,7 +18,7 @@ namespace Console_RPG
         public override void Use(Entity user, Entity target)
         {
             user.currentHP += this.healAmount;
-            Console.WriteLine(user.Name + " ate a Chili Dog. It was way past cool!");
+            Console.WriteLine(target.Name + " ate a Chili Dog. It was way past cool!");
             Console.WriteLine("Gained " + this.healAmount + " HP");
         }
     }

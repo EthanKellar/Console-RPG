@@ -19,7 +19,7 @@ namespace Console_RPG
         public override void Use(Entity user, Entity target)
         {
             user.currentHP += this.healAmount;
-            Console.WriteLine(user.Name + " Couldn't hold on much longer, so he drank a Chaos Cola!");
+            Console.WriteLine(target.Name + " Couldn't hold on much longer, so he drank a Chaos Cola!");
             Console.WriteLine("Gained " + this.healAmount + " HP");
         }
     }
