@@ -8,7 +8,6 @@ namespace Console_RPG
     {
 
 
-        public static Enemy eggbot = new Enemy("Eggbot", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
         //Green Hill Battle
         public static Enemy motobug = new Enemy("Motobug", 50, 50, new Stats(60, 30, 40), 10, "Speed");
@@ -27,8 +26,10 @@ namespace Console_RPG
 
         //Robotropolis boss battle
         public static Enemy metalSonic = new Enemy("Metal Sonic", 200, 100, new Stats(80, 45, 65), 100, "Speed");
+        public static Enemy eggbot = new Enemy("Eggbot", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
-        public static Enemy boss = new Enemy("Egg Dragon", 12500, 1000, new Stats(800, 1000, 500), 100, "All");
+        //final boss
+        public static Enemy boss = new Enemy("The Egg", 12500, 1000, new Stats(800, 1000, 500), 100, "All");
 
 
         public int ringsDroppedOnDefeat;

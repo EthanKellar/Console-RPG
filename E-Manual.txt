@@ -4,4 +4,8 @@ In this game, you play as Sonic the Hedgehog on his way to stop Dr. Eggman's att
 
 TIPS:
 -Simply typing the first letter of each option works just as well as typing out the whole command
+
 -Be sure to read the dialogue, you may need the hints!
+
+-It may be helpful to keepo track of locations you've been to with a map
+

@@ -8,7 +8,7 @@ namespace Console_RPG
     {
         public static Location stationSquare = new Location("Station Square", "A bustling city with Shops and Rest places galore!");
         public static Location greenHill = new Location("Green Hill", "A beautiful landscape of Hills and Loops", new Battle(new List<Enemy>() { Enemy.motobug, Enemy.chopper, Enemy.buzzBomber }));
-        public static Location chemicalPlant = new Location("Chemical Plant", "A dystopian city, where all of the water is this weird purple chemical");
+        public static Location chemicalPlant = new Location("Chemical Plant", "A dystopian city, where all of the water is this weird purple chemical", new Battle(new List<Enemy>() { Enemy.caterkiller, Enemy.grabber, Enemy.spiny }));
         public static Location angelIsland = new Location("Angel Island", "A floating island where the Master Emerald resides.");
         public static Location dustyDesert = new Location("Dusty Desert", "A dry desert, filled with traps and hazards");
         public static Location tropicalJungle = new Location("Tropical Jungle", "A dense jungle, packed with suprises!");
@@ -16,7 +16,7 @@ namespace Console_RPG
         public static Location springYard = new Location("Spring Yard", "What was once an EggFacility, is now just a yard of scraps and springs. Warning: is quite bouncy!");
         public static Location mysticRuin = new Location("Mystic Ruin", "The ruins of an ancient temple. I wonder if it's connected to Angel island?");
         public static Location hiddenTemple = new Location("Hidden Temple", "The hidden temple that Knuckles was talking about!");
-        public static Location robotropolis = new Location("Robotropolis", "The Capitol of the Eggman Empire.", new Battle(new List<Enemy>() { Enemy.metalSonic }));
+        public static Location robotropolis = new Location("Robotropolis", "The Capitol of the Eggman Empire.", new Battle(new List<Enemy>() { Enemy.metalSonic, Enemy.eggbot}));
         public static Location eggmanland = new Location("Eggmanland", "A twisted theme park consisting of traps, and sulfuric cotton candy.");
         public static Location westopolis = new Location("Westopolis", "A lively city located in-between the coastline, and a desert.", new Battle(new List<Enemy>() { Enemy.boss }));
         public static Location emeraldHill = new Location("Emerald Hill", "This may look simila to Green Hill, but there's twice as many obstacles to overcome, though it's worth the reward!", new Battle(new List<Enemy>() { Enemy.motobug2, Enemy.coconuts, Enemy.buzzer }));
@@ -69,8 +69,6 @@ namespace Console_RPG
 
         public void Resolve(List<Player> players, List<Ally> allies)
         {
-            //only resolves battle if there is a battle to resolve (Null checking)
-            poi?.Resolve(players, allies);
 
             Console.WriteLine("You arrived in " + this.name + ".");
             Console.WriteLine(this.description);
@@ -94,6 +92,7 @@ namespace Console_RPG
                 System.Threading.Thread.Sleep(5000);
                 Location.tropicalJungle.east = null;
                 Location.mysticRuin.north = hiddenTemple;
+                Location.robotropolis.north = eggmanland;
                 tropicalJungle.Resolve(players, allies);
                 return;
             }
@@ -124,10 +123,24 @@ namespace Console_RPG
                 System.Threading.Thread.Sleep(3000);
                 Console.WriteLine("Super Sonic: All-right! This is just what I needed to beat Eggman! Let's go, Tails!");
                 System.Threading.Thread.Sleep(5000);
-
-                //DO SAME THING WITH HIDDEN TEMPLE THAT YOU DID WITH ANGEL ISLAND!
+                Console.WriteLine("The temple collapses around our heroes. Sonic and Tails escape just in time, though. Our heroes now head to Eggmanland, north of Robotropolis");
+                Location.mysticRuin.north = null;
+                mysticRuin.Resolve(players, allies);
+                return;
+                
 
             }
+
+            if (this == eggmanland)
+            {
+                Console.WriteLine("Eggman: Ahaha! Sonic! You got past Metal, eh? Well, you won't be getting past this!");
+                System.Threading.Thread.Sleep(5000);
+
+            }
+
+            //only resolves battle if there is a battle to resolve (Null checking)
+            poi?.Resolve(players, allies);
+
 
 
             if (!(north is null))
@@ -170,6 +183,15 @@ namespace Console_RPG
                 this.Resolve(players, allies);
             }
             nextLocation.Resolve(players, allies);
+
+            if(Enemy.boss.currentHP <= 0)
+            {
+                Console.WriteLine("Eggman: Arrgghh! How did you do that??? I had thought of everything!");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Tails: You didn't consider the fact that no matter what robots you hide behind, SOnic will always find a way to beat you!");
+                System.Threading.Thread.Sleep(8000);
+                Console.WriteLine("");
+            }
         }
     }
 }
