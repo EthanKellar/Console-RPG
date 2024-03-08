@@ -14,8 +14,4 @@
             this.defense = defense;
         }
     }
-
-    
-
-
 }

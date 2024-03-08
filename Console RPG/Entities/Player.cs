@@ -11,7 +11,7 @@ namespace Console_RPG
 
         public static Player player1 = new Player("Sonic", 100, 80, new Stats(80, 45, 65), 0);
         
-        public static Player player2 = new Player("Tails", 100, 150, new Stats(60, 40, 80), 0);
+        public static Player player2 = new Player("Tails", 100, 150, new Stats(45, 40, 80), 0);
 
         public static int ringCount = 0;
 

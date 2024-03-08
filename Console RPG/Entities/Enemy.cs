@@ -11,8 +11,8 @@ namespace Console_RPG
 
         //Green Hill Battle
         public static Enemy motobug = new Enemy("Motobug", 50, 50, new Stats(60, 30, 40), 10, "Speed");
-        public static Enemy buzzBomber = new Enemy("Buzz Bomber", 50, 50, new Stats(30, 40, 60), 10, "Flight");
-        public static Enemy chopper = new Enemy("Chopper", 50, 50, new Stats(60, 30, 40), 10, "Speed");
+        public static Enemy buzzBomber = new Enemy("Buzz Bomber", 50, 50, new Stats(40, 30, 60), 10, "Flight");
+        public static Enemy chopper = new Enemy("Chopper", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
         //Emerald Hill Battle
         public static Enemy motobug2 = new Enemy("Motobug", 50, 50, new Stats(60, 30, 40), 10, "Speed");
@@ -21,15 +21,22 @@ namespace Console_RPG
 
         //Chemical Plant Battle
         public static Enemy caterkiller = new Enemy("Caterkiller", 50, 50, new Stats(60, 30, 40), 10, "Speed");
-        public static Enemy grabber = new Enemy("Buzzer", 50, 50, new Stats(30, 40, 60), 10, "Flight");
-        public static Enemy spiny = new Enemy("Coconuts", 50, 50, new Stats(30, 60, 40), 10, "Power");
+        public static Enemy grabber = new Enemy("Grabber", 50, 50, new Stats(30, 40, 60), 10, "Flight");
+        public static Enemy spiny = new Enemy("Spiny", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
         //Robotropolis boss battle
-        public static Enemy metalSonic = new Enemy("Metal Sonic", 200, 100, new Stats(80, 45, 65), 100, "Speed");
+        public static Enemy metalSonic = new Enemy("Metal Sonic", 200, 100, new Stats(80, 80, 80), 100, "Speed");
         public static Enemy eggbot = new Enemy("Eggbot", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
+        //Spring Yard battle
+        public static Enemy roller = new Enemy("Roller", 50, 50, new Stats(60, 30, 40), 10, "Speed");
+        public static Enemy buzzBomber2 = new Enemy("Buzz Bomber", 50, 50, new Stats(30, 40, 60), 10, "Flight");
+        public static Enemy yadrin = new Enemy("Yadrin", 50, 50, new Stats(30, 60, 40), 10, "Power");
+
         //final boss
-        public static Enemy boss = new Enemy("The Egg", 12500, 1000, new Stats(800, 1000, 500), 100, "All");
+        public static Enemy boss = new Enemy("The Egg", 12500, 1000, new Stats(8000, 4000, 500), 100, "All");
+        public static Enemy eggbot2 = new Enemy("Eggbot", 50, 50, new Stats(30, 60, 40), 10, "Power");
+        public static Enemy eggbot3 = new Enemy("Eggbot", 50, 50, new Stats(30, 60, 40), 10, "Power");
 
 
         public int ringsDroppedOnDefeat;

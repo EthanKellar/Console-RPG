@@ -18,6 +18,10 @@ namespace Console_RPG
 
         public override void Resolve(List<Player> players, List<Ally> allies)
         {
+            if (this.isResolved)
+            {
+                return;
+            }
             Console.Write($"You ran into ");
             foreach(var enemy in enemies)
             {
@@ -27,19 +31,24 @@ namespace Console_RPG
             while (true)
             {
                 //run this code on each of the players
-                foreach (var player in players)
+                List<Entity> speedy = new List<Entity>();
+                speedy.AddRange(players);
+                speedy.AddRange(allies);
+                speedy.AddRange(enemies);
+                speedy = speedy.OrderBy(player => player.stats.speed).Reverse().ToList();
+                foreach (var entity in speedy)
                 {
-                    if (player.currentHP > 0)
+                    if (entity.currentHP > 0)
                     {
-                        Console.WriteLine("It's " + player.Name + "'s turn!");
-                        player.DoTurn(players, allies, enemies);
+                        Console.WriteLine("It's " + entity.Name + "'s turn!");
+                        entity.DoTurn(players, allies, enemies);
                     }
                     else
                     {
-                        Console.WriteLine(player + "Is unable to continue battling!");
+                        Console.WriteLine(entity.Name + " is unable to continue battling!");
                     }
                 }
-
+/*
                 foreach (var enemy in enemies)
                 {
                     if (enemy.currentHP > 0)
@@ -49,9 +58,9 @@ namespace Console_RPG
                     }
                     else
                     {
-                        Console.WriteLine(enemy + "Is unable to continue battling!");
+                        Console.WriteLine(enemy.Name + " is unable to continue battling!");
                     }
-                }
+                }*/
 
                 //If all players die...
                 if (players.TrueForAll(players => players.currentHP <= 0))
@@ -65,9 +74,11 @@ namespace Console_RPG
                 if (enemies.TrueForAll(enemies => enemies.currentHP <= 0))
                 {
                     Console.WriteLine("All Right!");
+                    this.isResolved = true;
                     break;
                 }
             }
         }
     }
 }
+

@@ -24,12 +24,12 @@ namespace Console_RPG
             //then you'll get the hint that north of robotropolis is Eggmanland, which is where you fight the doc
 
             //Locations go like: North, East, South, West
-            Location.stationSquare.setNearbyLocations(Location.mysticRuin, Location.casinoNight, Location.greenHill, Location.dustyDesert);
+            Location.stationSquare.setNearbyLocations(Location.mysticRuin, Location.springYard, Location.greenHill, Location.dustyDesert);
             Location.dustyDesert.setNearbyLocations(south: Location.westopolis);
             Location.greenHill.setNearbyLocations(west: Location.westopolis, east: Location.emeraldHill);
             Location.mysticRuin.setNearbyLocations();
-            Location.casinoNight.setNearbyLocations(Location.springYard, Location.tropicalJungle, Location.emeraldHill);
-            Location.springYard.setNearbyLocations(Location.robotropolis, Location.chemicalPlant);
+            Location.springYard.setNearbyLocations(Location.casinoNight, Location.tropicalJungle, Location.emeraldHill);
+            Location.casinoNight.setNearbyLocations(Location.robotropolis, Location.chemicalPlant);
             Location.emeraldHill.setNearbyLocations(south: Location.emeraldCoast);
             Location.tropicalJungle.setNearbyLocations(east: Location.angelIsland);
 
